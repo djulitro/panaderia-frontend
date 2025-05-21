@@ -109,8 +109,8 @@ function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    const response = await axios.post('/auth/login', {
-      user: email,
+    const response = await axios.post('/api/login', {
+      email,
       password,
     });
 
@@ -127,7 +127,7 @@ function AuthProvider({ children }) {
   };
 
   const register = async (email, password, firstName, lastName) => {
-    const response = await axios.post('/api/account/register', {
+    const response = await axios.post('/api/register', {
       email,
       password,
       firstName,
@@ -146,7 +146,7 @@ function AuthProvider({ children }) {
   };
 
   const logout = async () => {
-    await axios.post('/auth/logout');
+    await axios.post('/api/logout');
     setSession(null);
     dispatch({ type: 'LOGOUT' });
   };
